@@ -63,12 +63,15 @@ export const FormDESFile = () => {
       const arrayBuffer = await file.arrayBuffer();
       const uint8Array = new Uint8Array(arrayBuffer);
 
+      console.log("File trước khi DES: ", uint8Array);
+
       const { error, success } = desWithFile(type, Array.from(uint8Array), key);
 
       if (error) console.error(error.message);
       else if (success) {
-        console.log(success.result);
         const uint8Array = Uint8Array.from(success.result);
+
+        console.log("File sau khi DES: ", uint8Array);
 
         const name = file.name.split(".").shift();
         const extension = file.name.split(".").pop();
@@ -116,6 +119,7 @@ export const FormDESFile = () => {
     e.preventDefault();
     const randKey = generateHexadecimalString(16);
     setKey(randKey);
+    if (isValidHex(randKey)) setKeyError(null);
   };
 
   return (

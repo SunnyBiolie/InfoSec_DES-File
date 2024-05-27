@@ -1,5 +1,5 @@
 import { table_leftShifts, table_pc1, table_pc2 } from "./index_tables";
-import { binaryToHex, hexToBinary, permuteByConst } from "./utils";
+import { permuteByConst } from "./utils";
 
 /**
  * Khởi tạo 16 sub_key từ key được cho
